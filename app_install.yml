@@ -1,0 +1,14 @@
+---
+  - name: "Install apps and scripts"
+    hosts: localhost
+    connection: local
+    tasks:
+    - name: Install apps
+      become: true
+      become_user: root
+      dnf:
+        state: present
+        name:
+          - sxiv
+          - htop
+          - neofetch
