@@ -2,11 +2,15 @@
   - name: "Install apps and scripts"
     hosts: localhost
     connection: local
+    gather_facts: yes
     tasks:
-    - name: Install apps
+    - name: Display OS facts
+      debug:
+        msg: "The OS detected is {{ansible_os_family}}"
+    - name: Install on Ubuntu/Debian
       become: true
       become_user: root
-      dnf:
+      apt:
         state: present
         name:
           - sxiv
